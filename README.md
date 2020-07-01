@@ -1,24 +1,10 @@
-# kitchen-art
-
-## Project setup
+# Kitchen Art - VueJs
 ```
-npm install
+VueJs with Node/MongoDB backend
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Project Details
+I wanted to go with a CRUD app, but I've already been there and done that.  What it one more CRUD app after all???
 
-### Compiles and minifies for production
-```
-npm run build
-```
+This is a read only app using VueJs, Vuex, NodeJs, Express, MongoDb
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
