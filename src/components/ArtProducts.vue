@@ -31,6 +31,7 @@ export default {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    padding-top: 120px;
 
   }
 

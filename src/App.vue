@@ -1,12 +1,16 @@
 <template>
   <div id="app">
 
+    <header-template @changeCategory="setProductFilter" />
+
     <div v-if="hasProducts">
-      <Products :products="productsView" />
+      <products
+        :products="productsView"
+      />
     </div>
 
     <div v-else>
-      <h3>Get Product List Failure!  Refresh page to try again.</h3>
+      <img src="/images/database-error.jpg" title="database error" />
     </div>
 
   </div>
@@ -16,18 +20,20 @@
 
 <script>
 /* eslint-disable no-debugger */
-import Products from '@/components/ArtProducts'
+import HeaderTemplate from '@/components/Header';
+import Products from '@/components/ArtProducts';
+
 
 export default {
   name: 'App',
   components: {
-    Products
+    HeaderTemplate, Products
   },
   data() {
     return {
       category: "fruit",
       productsView: [],
-      hasProducts: false
+      hasProducts: true
     }
   },
   computed: {
@@ -41,9 +47,15 @@ export default {
         if(init) {
           this.setProductFilter();
         }
+        else{
+          this.hasProducts = false;
+        }
       })
   },
   methods: {
+    filterProducts(param1) {
+      console.log("param1: " + param1);
+    },
     setProductFilter(textIn) {
       if(!textIn) {
         textIn = this.category;
@@ -69,11 +81,12 @@ export default {
 
 <style>
 #app {
+  background: url(/images/potholders-faded.jpg);
+  color: #2c3e50;
   font-family: Avenir, Helvetica, Arial, sans-serif;
+  text-align: center;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
+
 </style>

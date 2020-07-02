@@ -11,11 +11,11 @@ export const store = new Vuex.Store({
     state: {
         Products: [],
         ProductTypes: {
-            "meat": { text: "Meat"},
-            "fruit": { text: "Fruit" },
-            "bakery": { text: "Bakery" },
-            "dairy": { text: "Dairy" },
-            "vegetable": { text: "Vegetables" }
+            "meat": { id: "meat", text: "Meat"},
+            "fruit": { id: "fruit", text: "Fruit" },
+            "bakery": { id: "bakery", text: "Bakery" },
+            "dairy": { id: "dairy", text: "Dairy" },
+            "vegetable": { id: "vegetable", text: "Vegetables" }
         }
     },
     getters: {
@@ -49,5 +49,6 @@ export const store = new Vuex.Store({
 
             return view;
         }
+        //TODO: SINGLE PRODUCT VIEW
     }
 });

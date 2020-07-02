@@ -49,65 +49,45 @@ export default {
   },
   computed: {
     dimension1() {
-      let wIsInches = false;
-      let w = Math.floor(this.product.width / 305);
+      var dimensions = this.getDimensions(
+        this.product.width,
+        this.product.height
+      );
 
-      if(w <= 0) {
-        w = Math.floor(this.product.width / 25.4);
-        wIsInches = true;
-      }
-
-
-      let hIsInches = false;
-      let h = Math.floor(this.product.height / 305);
-
-      if(h <= 0) {
-        h = Math.floor(this.product.height / 25.4);
-        hIsInches = true;
-      }
-
-      // debugger
-      w = (wIsInches)? w + "in." : w + "ft.";
-      h = (hIsInches)? h + "in." : h + "ft.";
-
-      return `${w} x ${h}`;
+      return `${dimensions.w} x ${dimensions.h}`;
     },
     dimension2() {
-      let wIsInches = false;
-      let width = this.product.width * 2;
-      let w = Math.floor(width / 305);
+      var dimensions = this.getDimensions(
+        this.product.width,
+        this.product.height,
+        true);
 
-      if(w <= 0) {
-        w = Math.floor(width / 25.4);
-        wIsInches = true;
-      }
-
-
-      let hIsInches = false;
-      let height = this.product.height * 2;
-      let h = Math.floor(height / 305);
-
-      if(h <= 0) {
-        h = Math.floor(height / 25.4);
-        hIsInches = true;
-      }
-
-      // debugger
-      w = (wIsInches)? w + "in." : w + "ft.";
-      h = (hIsInches)? h + "in." : h + "ft.";
-
-      return `${w} x ${h}`;
+      return `${dimensions.w} x ${dimensions.h}`;
     },
     pricing1() {
-      return this.product.price;
+      return (this.product.price).toFixed(2);
     },
     pricing2() {
-      return this.product.price * 2;
+      return (this.product.price * 1.5).toFixed(2);
     }
   },
   methods: {
     getImgUrl(fileName) {
       return "/images/" + fileName;
+    },
+    getDimensions(width, height, isLargeImg = false) {
+      let returnObj = {};
+
+      if(isLargeImg) {
+        width = width * 2;
+        height = height * 2;
+      }
+
+      //quick and dirty conversion (as mm) to inches
+      returnObj.w = Math.floor(width / 25.4) + '"';
+      returnObj.h = Math.floor(height / 25.4) + '"';
+
+      return returnObj;
     }
   }
 }
@@ -121,14 +101,16 @@ export default {
     background-color: #f9f9f9;
     border: 1px solid #3949AB;
     border-radius: 4px;
-    box-shadow: 1px 1px 3px #673AB7;
+    box-shadow: 1px 1px 3px #9E9E9E;
     padding: 0 7px 12px;
     margin: 21px 0;
+    transition: all .7s;
     width: 200px;
 
     &:hover{
       background-color: #fff;
-      box-shadow: 3px 3px 2px #607D8B;
+      border: none;
+      box-shadow: 1px 2px 4px 2px #607D8B;
 
       .item-hdr h3 {
         color: #F44336
@@ -149,7 +131,7 @@ export default {
   }
 
   img{
-    width: 150px;
+    width: 100px;
   }
 
   .item-description {
