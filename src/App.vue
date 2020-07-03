@@ -6,6 +6,7 @@
     <div v-if="hasProducts">
       <products
         :products="productsView"
+        @showLrgImg="viewSingleArtItem"
       />
     </div>
 
@@ -13,32 +14,42 @@
       <img src="/images/database-error.jpg" title="database error" />
     </div>
 
+    <modal ref="modal">
+      <item-view :product="singleItemView" />
+    </modal>
+
   </div>
 </template>
 
 
 
 <script>
-/* eslint-disable no-debugger */
 import HeaderTemplate from '@/components/Header';
 import Products from '@/components/ArtProducts';
+import Modal from '@/components/Modal';
+import ItemView from '@/components/SingleArtItemView';
 
 
 export default {
   name: 'App',
   components: {
-    HeaderTemplate, Products
+    HeaderTemplate, Products, Modal, ItemView
   },
   data() {
     return {
       category: "fruit",
       productsView: [],
+      singleItemView: "",
       hasProducts: true
+
     }
   },
   computed: {
     categories: function() {
       return this.$store.state.ProductTypes;
+    },
+    modal() {
+      return this.$refs.modal;
     }
   },
   created() {
@@ -53,9 +64,6 @@ export default {
       })
   },
   methods: {
-    filterProducts(param1) {
-      console.log("param1: " + param1);
-    },
     setProductFilter(textIn) {
       if(!textIn) {
         textIn = this.category;
@@ -74,6 +82,10 @@ export default {
 
           //how to handle?  *refresh page msg?
         });
+    },
+    viewSingleArtItem(artItem) {
+      this.singleItemView = artItem;
+      this.modal.isOpen = true;
     }
   }
 }

@@ -3,6 +3,7 @@
     <art-item v-for="item in products"
       :key="item.key"
       :product="item"
+      @showLrgImg="showArtItem"
     ></art-item>
   </div>
 </template>
@@ -19,6 +20,12 @@ export default {
     products: {
       type: Array,
       required: true
+    }
+  },
+  methods: {
+    showArtItem(artItem) {
+      //bubble up click event to App.vue
+      this.$emit("showLrgImg", artItem);
     }
   }
 

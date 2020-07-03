@@ -1,5 +1,5 @@
 <template>
-  <div class="art-item">
+  <div class="art-item" @click="showArtItem(product)">
 
     <div class="item-hdr">
       <h3>{{ product.title }}</h3>
@@ -88,6 +88,10 @@ export default {
       returnObj.h = Math.floor(height / 25.4) + '"';
 
       return returnObj;
+    },
+    showArtItem(artItem) {
+      //bubble up click event to ArtProducts.vue
+      this.$emit("showLrgImg", artItem);
     }
   }
 }

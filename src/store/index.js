@@ -5,14 +5,12 @@ Vue.use(Vuex);
 
 const BASE_URL = "http://localhost:5000";
 
-/* eslint-disable no-debugger */
-
 export const store = new Vuex.Store({
     state: {
         Products: [],
         ProductTypes: {
-            "meat": { id: "meat", text: "Meat"},
             "fruit": { id: "fruit", text: "Fruit" },
+            "meat": { id: "meat", text: "Meat"},
             "bakery": { id: "bakery", text: "Bakery" },
             "dairy": { id: "dairy", text: "Dairy" },
             "vegetable": { id: "vegetable", text: "Vegetables" }
@@ -49,6 +47,5 @@ export const store = new Vuex.Store({
 
             return view;
         }
-        //TODO: SINGLE PRODUCT VIEW
     }
 });

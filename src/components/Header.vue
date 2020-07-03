@@ -55,6 +55,7 @@ export default {
 
   p {
     color: #3f51b58c;
+    font-size: .7rem;
     font-style: italic;
     margin: 0 0 3px;
   }
@@ -71,10 +72,11 @@ export default {
     border: 1px solid #4527A0;
     border-radius: 30px;
     color: #fff;
+    font-size: .9rem;
     margin-right: 4px;
     outline: none;
     padding: 5px 11px;
-    transition: all 1s;
+    transition: all .7s;
 
     &:hover{
       background-color: #303F9F;
