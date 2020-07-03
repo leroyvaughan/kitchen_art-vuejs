@@ -39,7 +39,7 @@ export default {
     return {
       category: "fruit",
       productsView: [],
-      singleItemView: "",
+      singleItemView: {},
       hasProducts: true
 
     }

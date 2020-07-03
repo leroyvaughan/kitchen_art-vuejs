@@ -3,7 +3,12 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 Vue.use(Vuex);
 
-// const BASE_URL = "http://localhost:5000";
+
+let BASE_URL = "http://localhost:5000";
+if (document.location.href != "http://localhost:5001/") {
+    BASE_URL = "";
+}
+
 
 export const store = new Vuex.Store({
     state: {
@@ -28,8 +33,7 @@ export const store = new Vuex.Store({
     },
     actions: {
         initStore(context){
-            // return axios.get(`${BASE_URL}/api/kitchenart`)
-            return axios.get(`/api/kitchenart`)
+            return axios.get(`${BASE_URL}/api/kitchenart`)
                 .then((response) => {
                     // debugger
                     context.commit("SAVE_PRODUCT_LIST", response.data);

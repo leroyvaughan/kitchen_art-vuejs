@@ -39,7 +39,6 @@
 
 
 <script>
-/* eslint-disable no-debugger */
 export default {
   props: {
     product: {

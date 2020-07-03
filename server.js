@@ -2,7 +2,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-// var path = require('path');
 app = express();
 
 require('./server/lib/global-vars');
