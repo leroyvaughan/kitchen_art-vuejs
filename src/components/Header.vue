@@ -76,7 +76,7 @@ export default {
     margin-right: 4px;
     outline: none;
     padding: 5px 11px;
-    transition: all .7s;
+    transition: all .3s;
 
     &:hover{
       background-color: #303F9F;

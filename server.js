@@ -9,7 +9,7 @@ require('./server/lib/global-vars');
 require('dotenv').config();
 var port = process.env.PORT || 5000;
 
-// var serveStatic = require('serve-static');
+var serveStatic = require('serve-static');
 
 
 const db = require('./server/db');
@@ -36,14 +36,14 @@ app.use(helmet());
 
 
 //serve files created during "npm run build"
-// app.use(serveStatic(__dirname + "/dist"));
+app.use(serveStatic(__dirname + "/dist"));
 
 
 
 
-app.get('/', (req, res) => {
-    res.redirect("/api/kitchenart");
-})
+// app.get('/', (req, res) => {
+//     res.redirect("/api/kitchenart");
+// })
 
 
 app.listen(port, function () {
