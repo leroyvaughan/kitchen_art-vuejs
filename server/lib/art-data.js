@@ -1,20 +1,21 @@
-﻿const kitchenArt = require('./kitchen-art.js');
+﻿/********************************************************************
+ Use this class to massage the data pulled from the db
+ --this logic should always be separate from actual db call
+ because there may be different uses for the data...
+ *********************************************************************/
 
 
 module.exports = function () {
-    console.log("\r\nkitchen art-data init...");
+    // console.log("\r\nkitchen art-data init...");
+    const kitchenArt = require('./kitchen-art.js');
+    const art = new kitchenArt();
 
     const self = this;
-    let data = {};
-
-    let art = new kitchenArt();
-
-
 
     //   PUBLIC METHOD THAT GETS ALL KITCHEN ART
     self.getData = () => {
         return new Promise((resolve, reject) => {
-            console.log("getData()...");
+            // console.log("getData()...");
 
             getKitchenArt()
             .then((resp) => {
@@ -31,33 +32,31 @@ module.exports = function () {
     };
 
 
-
-    /// PRIVATE GET METHODS
+    /// PRIVATE METHOD
     let getKitchenArt = () => {
+
         return new Promise((resolve, reject) => {
             console.log("\r\ngetting kitchen art");
 
-            //set empty object, JIC
-            data.art = [];
+            let data = {};
 
             art.get()
                 .then((resp) => {
-
                     let data = resp;
                     let tempData = resp;    //for double check
 
                     //attempt sort of JsonArray items by type
                     try {
                         tempData.sort(sortJsonByKey("type"));
+
+                        //probably want to get count here for double check?
+                        // console.log("kitchen art filter:\t" + data.length + ">>\t" + tempData.length);
+
+                        data = tempData;
                     }
                     catch (e) {
                         console.log("err in getKitchenArt).dataSort:\t" + e);
                     }
-
-                    //probably want to get count here for double check?
-                    console.log("kitchen art filter:\t" + data.length + ">>\t" + tempData.length);
-
-                    data = tempData;
 
                     resolve(data);
                 })

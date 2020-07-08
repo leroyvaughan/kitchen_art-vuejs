@@ -1,12 +1,11 @@
 ﻿/********************************************************************
-    Use this class to get the kitchen art data
+    Use this class to get the kitchen art data from db
+      -- makes the actual db call
 *********************************************************************/
 
 
-const KitchenArt = require('./art-model.js');
-
-
 module.exports = function () {
+    const KitchenArt = require('./art-model.js');
     const self = this;
 
     self.get = function () {
@@ -16,7 +15,7 @@ module.exports = function () {
 
     let _get = function () {
         return new Promise((resolve, reject) => {
-            console.log("kitchen-art get()...");
+            // console.log("kitchen-art get()...");
 
             KitchenArt.find(
                 {},

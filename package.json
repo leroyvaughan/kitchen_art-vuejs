@@ -2,11 +2,15 @@
   "name": "kitchen-art-vuecli",
   "version": "1.1.2",
   "private": true,
+  "jest": {
+    "testEnvironment": "node"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "start": "node --use_strict server.js"
+    "start": "node --use_strict server.js",
+    "test": "jest --testEnvironment=node --verbose --maxWorkers=1 --watchAll"
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -32,6 +36,8 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "jest": "^26.1.0",
+    "node-mocks-http": "^1.8.1",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
