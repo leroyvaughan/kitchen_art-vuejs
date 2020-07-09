@@ -1,21 +1,36 @@
-const serverFldr = "../../server";
-const ArtModel = require(`${serverFldr}/lib/art-model`);
-const httpMocks = require("node-mocks-http");
-const MockData = require("../__mocks__/test-data.json");
+const serverFldr = "../server";
 
 
-//  ---> INTEGRATION TESTING?
-// let req, res, next;
-// beforeEach(() => {
-//   req = httpMocks.createRequest();
-//   res = httpMocks.createResponse();
-// });
+describe("Unit Test Schema Model", () => {
+  const ArtModel = require(`${serverFldr}/lib/art-model`);
+  const MockController = require('./__mocks__/mock-contrller');
+  const httpMocks = require("node-mocks-http");
+  const MockData = require("./__mocks__/test-data.json");
 
-// it("getAllArt should return array of json data", () => {
-  //   req.body = MockData.all;
-  //   ProdCntrllr.getAllArt(req, res);
-  //   expect(ProdCntrllr.getAllArt).toBeCalledWith(MockData.all);
-//  ---> INTEGRATION TESTING?
+  //spy on ArtModel create function
+  ArtModel.create = jest.fn();
+
+
+  let req, res, next;
+  beforeEach(() => {
+    req = httpMocks.createRequest();
+    req.body = MockData.single;
+    res = httpMocks.createResponse();
+  });
+
+  it("should populate schema model with single product json data", () => {
+      MockController.mockDataCall(req, res);
+      expect(ArtModel.create).toBeCalledWith(MockData.single);
+    });
+
+    it("should return json bodyin data", () => {
+      ArtModel.create.mockReturnValue(MockData.single);
+      MockController.mockDataCall(req, res);
+      expect(res._getJSONData()).toStrictEqual(MockData.single);
+    });
+
+});
+
 
 
 describe("Product Router", () => {
@@ -29,15 +44,15 @@ describe("Product Router", () => {
 });
 
 describe("Product Controller", () => {
-  const ProdCntrllr = require(`${serverFldr}/controllers/product-ctrl`);
+  const ProductController = require(`${serverFldr}/controllers/product-ctrl`);
 
   it("should exist as an object", () => {
-    expect(typeof ProdCntrllr).not.toBe("undefined");
-    expect(typeof ProdCntrllr).toBe("object");
+    expect(typeof ProductController).not.toBe("undefined");
+    expect(typeof ProductController).toBe("object");
   });
 
   it("should have a function: getAllArt()", () => {
-    expect(typeof ProdCntrllr.getAllArt).toBe("function");
+    expect(typeof ProductController.getAllArt).toBe("function");
   });
 
   it("getAllArt() should call on ArtData Module", () => {
@@ -46,7 +61,7 @@ describe("Product Controller", () => {
       ArtData.mockClear();
 
       async() => {
-        await ProdCntrllr.getAllArt();
+        await ProductController.getAllArt();
         expect(ArtData).toHaveBeenCalled();
       }
   });
@@ -104,8 +119,6 @@ describe("Kitchen Art CommonJs Module", () => {
     });
 
 });
-
-
 
 
 
