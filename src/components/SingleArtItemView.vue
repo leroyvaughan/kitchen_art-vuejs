@@ -30,7 +30,7 @@ export default {
 
   img {
     max-height: 79vh;
-    max-width: 89%;
+    width: 89%;
   }
 
 </style>

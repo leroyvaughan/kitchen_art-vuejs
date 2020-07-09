@@ -59,6 +59,7 @@ export default {
     margin: auto;
     padding: 30px 0;
     position: relative;
+    min-width: 43%;
     max-width: 90%;
   }
 
@@ -70,14 +71,14 @@ export default {
     border-radius: 50px;
     border: 1px solid #ccc;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 17px;
     font-weight: bold;
     line-height: 7px;
-    padding: 3px;
+    padding: 7px;
 
     position:absolute;
-    top: 7px;
-    right: 7px;
+    top: 4px;
+    right: 4px;
 
     &:hover{
       background-color: #ccc;
