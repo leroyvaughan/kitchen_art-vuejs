@@ -5,6 +5,7 @@
       <div class="modal-content">
 
         <div id="frame-btns">
+          <p>Add a Frame for Artful Delight!</p>
           <span v-for="frame in frames"
             :key="frame.index"
             class="frame-tile"
@@ -111,6 +112,12 @@ export default {
   margin: auto;
   padding: 0 20px 12px;
   width: 80%;
+
+  p {
+    color: #673AB7;
+    margin: 0 0 7px;
+  }
+
 }
 .frame-tile {
   border: 1px solid #777;

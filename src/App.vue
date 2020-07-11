@@ -97,7 +97,7 @@ export default {
 <style>
 #app {
   /* background: url(/images/potholders-faded.jpg); */
-  background: url(/images/textures/eosloopy1d.png);
+  background: url(/images/textures/main-background.png);
   color: #2c3e50;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
