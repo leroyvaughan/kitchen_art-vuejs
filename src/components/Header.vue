@@ -38,7 +38,7 @@ export default {
 
 <style lang="scss" scoped>
   #header{
-    background: #FFAB91;
+    background: #FFF;
     padding-top: 0;
     position: fixed;
     top: 0;
@@ -47,23 +47,21 @@ export default {
   }
 
   h1{
-    color: #fff;
-    font-family: "Comic Sans MS", cursive, sans-serif;
+    color: #3F51B5;
     font-size: 2em;
     margin: 0;
   }
 
   p {
-    color: #3f51b58c;
+    color: #9E9E9E;
     font-size: .7rem;
     font-style: italic;
     margin: 0 0 3px;
   }
 
   nav {
-    background-color: #fff;
     border: 1px solid #3F51B5;
-    border-width: 1px 0;
+    border-width: 0 0 1px;
     padding: 7px 0;
   }
 

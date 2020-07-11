@@ -14,8 +14,8 @@
       <img src="/images/database-error.jpg" title="database error" />
     </div>
 
-    <modal ref="modal">
-      <item-view :product="singleItemView" />
+    <modal ref="modal" @getFrame="setFrameClass">
+      <item-view ref="imgArt" :product="singleItemView" />
     </modal>
 
   </div>
@@ -86,6 +86,9 @@ export default {
     viewSingleArtItem(artItem) {
       this.singleItemView = artItem;
       this.modal.isOpen = true;
+    },
+    setFrameClass(style) {
+      this.$refs.imgArt.setFrameClass(style);
     }
   }
 }
@@ -93,7 +96,8 @@ export default {
 
 <style>
 #app {
-  background: url(/images/potholders-faded.jpg);
+  /* background: url(/images/potholders-faded.jpg); */
+  background: url(/images/textures/eosloopy1d.png);
   color: #2c3e50;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;

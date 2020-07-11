@@ -1,0 +1,100 @@
+/***********************************************************
+
+  In a production environment, the images would
+  be standardized (ex. Width, Height).
+
+  There might also be different CSS for wide vs. tall img's.
+
+  This is for concept only to show that I know how to code...
+
+*************************************************************/
+
+
+.img-frame {
+  padding: 2% 0% 1%;
+  padding: 1.2% 0% 1%;
+  margin: auto;
+  max-width: 88%;
+  min-width: 88%;
+}
+
+.img{
+  min-height: 80vh;
+  max-height: 80vh;
+  max-width: 95%;
+  padding: 1%;
+}
+
+
+@mixin setFrame($color, $img) {
+  border: 1px solid + ' ' + $color;
+  background-image: url("/images/textures/" + $img + ".png")
+}
+
+
+
+.outer {
+  &-orange {
+    @include setFrame('#444', 'orange2');
+  }
+
+  &-blue {
+    @include setFrame('#486969', 'blue2');
+  }
+
+  &-greenA {
+    @include setFrame('#000', 'greenA2');
+  }
+
+  // elegant green
+  &-greenB {
+    @include setFrame('#000', 'greenB2');
+  }
+
+  &-gray {
+    @include setFrame('#656565', 'gray2');
+  }
+
+  &-brown {
+    @include setFrame('#5a431d', 'brown2');
+  }
+
+  &-purple {
+    @include setFrame('#705f75', 'purple2');
+  }
+
+}
+
+
+
+
+.inner {
+  &-orange {
+    @include setFrame('#563820', 'orange1');
+  }
+
+  &-blue {
+    @include setFrame('#2c515d', 'blue1');
+  }
+
+  &-greenA {
+    @include setFrame('#000', 'greenA1');
+  }
+
+  // elegant green
+  &-greenB {
+    @include setFrame('#000', 'greenB1');
+  }
+
+  &-gray {
+    @include setFrame('#555', 'gray1');
+  }
+
+  &-brown {
+    @include setFrame('#333', 'brown1');
+  }
+
+  &-purple {
+    @include setFrame('#333', 'purple1');
+  }
+}

@@ -19,7 +19,10 @@ export const store = new Vuex.Store({
             "bakery": { id: "bakery", text: "Bakery" },
             "dairy": { id: "dairy", text: "Dairy" },
             "vegetable": { id: "vegetable", text: "Vegetables" }
-        }
+        },
+        Frames: [
+            "orange", "blue", "greenB", "gray", "brown", "purple", "img"
+        ]
     },
     getters: {
         products: state => {

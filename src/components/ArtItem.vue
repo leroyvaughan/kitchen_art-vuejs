@@ -72,7 +72,7 @@ export default {
   },
   methods: {
     getImgUrl(fileName) {
-      return "/images/" + fileName;
+      return "/images/art/" + fileName;
     },
     getDimensions(width, height, isLargeImg = false) {
       let returnObj = {};

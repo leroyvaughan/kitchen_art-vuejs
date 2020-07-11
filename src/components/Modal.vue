@@ -3,6 +3,17 @@
 
     <div class="modal" :class="{'is-active': isOpen}">
       <div class="modal-content">
+
+        <div id="frame-btns">
+          <span v-for="frame in frames"
+            :key="frame.index"
+            class="frame-tile"
+            @click="setFrameColors(frame)"
+          >
+            <span :style="getFrameTile(`${frame}2`)" />
+            <span :style="getFrameTile(`${frame}1`)" />
+          </span>
+        </div>
         <span id="close-btn" @click="isOpen=false">&times;</span>
 
         <!-- this is where the content in parent will display -->
@@ -16,15 +27,23 @@
 
 
 <script>
+
 export default {
   data() {
     return{
-      isOpen: false
+      isOpen: false,
+      frames: this.$store.state.Frames
     }
   },
   methods: {
     closeModal(){
       this.isOpen = false;
+    },
+    getFrameTile(color) {
+      return "background-image: url(/images/textures/" + color + ".png)";
+    },
+    setFrameColors(style) {
+      this.$emit("getFrame", style);
     }
   }
 }
@@ -59,7 +78,6 @@ export default {
     margin: auto;
     padding: 30px 0;
     position: relative;
-    min-width: 43%;
     max-width: 90%;
   }
 
@@ -86,6 +104,32 @@ export default {
     }
   }
 }//end modal
+
+
+#frame-btns {
+  // border: 1px solid red;
+  margin: auto;
+  padding: 0 20px 12px;
+  width: 80%;
+}
+.frame-tile {
+  border: 1px solid #777;
+  cursor: pointer;
+  display: inline-block;
+  height: 30px;
+  margin: 0 4px;
+  width: 30px;
+
+  &:hover{
+    box-shadow: 1px 1px 1px #000;
+    opacity: 0.8;
+  }
+
+  span {
+    display: block;
+    height: 50%;
+  }
+}
 
 
 </style>
