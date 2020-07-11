@@ -111,7 +111,7 @@ export default {
   // border: 1px solid red;
   margin: auto;
   padding: 0 20px 12px;
-  width: 80%;
+  width: 90%;
 
   p {
     color: #673AB7;
